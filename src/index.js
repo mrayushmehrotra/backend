@@ -21,7 +21,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: "https://chatty-p2d69t503-ayushoopps-projects.vercel.app",
-    credentials: true,
+
   })
 );
 
