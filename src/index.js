@@ -19,10 +19,7 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors({
-    origin: "https://chatty-p2d69t503-ayushoopps-projects.vercel.app",
-
-  })
+  cors()
 );
 
 app.use("/api/auth", authRoutes);
