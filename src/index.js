@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://chatty-p2d69t503-ayushoopps-projects.vercel.app",
     credentials: true,
   })
 );
@@ -28,7 +28,7 @@ app.use(
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 app.get("/", (req, res) => {
-  res.send("Server is working fine");
+  res.json({"Server is working fine"});
 });
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
