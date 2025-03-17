@@ -11,29 +11,11 @@ import { app, server } from "./lib/socket.js";
 // Load environment variables
 dotenv.config();
 
-const PORT = process.env.PORT || 5000; // Fallback to port 5000 if PORT is not set
+const PORT = process.env.PORT || 5000; 
 const __dirname = path.resolve();
 
-// CORS configuration
-const allowedOrigins = [
-  "http://localhost:5173", // Local development
-  "https://chatty-indol.vercel.app", // Hosted frontend
-];
-
 app.use(
-  cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (e.g., mobile apps, curl)
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true, // Required for cookies/sessions
-  })
+  cors()
 );
 
 // Middleware
