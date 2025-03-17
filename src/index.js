@@ -16,13 +16,7 @@ const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
 // Configure CORS to allow all origins
-app.use(
-  cors({
-    origin: "*", // Wildcard to allow all domains
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+app.use(cors());
 
 app.use(express.json());
 app.use(cookieParser());
