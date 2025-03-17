@@ -2,8 +2,28 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-app.use(cors());
 import path from "path";
+
+const allowedOrigins = [
+  'http://localhost:5173', // Local development
+  'https://chatty-indol.vercel.app' // Hosted frontend
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g., mobile apps, curl)
+      if (!origin) return callback(null, true);
+      
+      if (allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true, // Required for cookies/sessions
+  })
+);
 
 import { connectDB } from "./lib/db.js";
 
