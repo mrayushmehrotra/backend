@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+app.use(cors());
 import path from "path";
 
 import { connectDB } from "./lib/db.js";
@@ -16,7 +17,7 @@ const PORT = process.env.PORT;
 const __dirname = path.resolve();
 
 // Configure CORS to allow all origins
-app.use(cors());
+
 
 app.use(express.json());
 app.use(cookieParser());
